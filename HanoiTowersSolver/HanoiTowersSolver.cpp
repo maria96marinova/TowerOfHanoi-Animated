@@ -10,11 +10,12 @@
 #define MAX_LOADSTRING 100
 #define IDT_TIMER1 1234567
 
-// Global Variables:
+// Global Variables for the properties of the main window=w:
 HINSTANCE hInst;								// current instance
 TCHAR szTitle[MAX_LOADSTRING];					// The title bar text
 TCHAR szWindowClass[MAX_LOADSTRING];			// the main window class name
 
+//pointer to an object of type HanoiDrawer
 HanoiDrawer* hanoiDrawer;
 void DrawNextStep(HWND);
 bool disposeed = false;
@@ -58,7 +59,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_HANOITOWERSSOLVER));
 
-	// Main message loop:
+	// Main message loop
 	while (GetMessage(&msg, NULL, 0, 0))
 	{
 		if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
@@ -274,8 +275,6 @@ INT_PTR CALLBACK SolveMsgHndl(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPa
 	case WM_COMMAND:
 		switch(LOWORD(wParam))
 		{
-		/*case IDC_ABOUT:
-			break;*/
 		case IDC_SOLVE:
 			if(hanoiDrawer->GetAutoSolveAction() == true)
 			{

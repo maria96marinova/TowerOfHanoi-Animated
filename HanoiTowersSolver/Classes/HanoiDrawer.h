@@ -96,7 +96,7 @@ public:
 	// Hide information about the current step from the main window
 	void HideCurrentStepInfo();
 
-	// Draws a given plate in the main window
+	// Draws a given disk in the main window
 	void DrawGUIDisk(string, POINT, RECT);
 
 	// Invalidate the area of drawing
@@ -120,7 +120,7 @@ private:
 		//				- index of the current intermediate
 		, listSavedState;
 
-	// lists save the visual appearance
+	// lists of pointers to Disk objects save the visual appearance
 	// of each disk in its corresponding
 	// tower
 	list<DiskGUI*> listTower1GUI, listTower2GUI, listTower3GUI;
@@ -128,7 +128,7 @@ private:
 
 	bool proceedNextStep
 		, solved;
-	// Coordinates of the 3 stands
+	// Coordinates of the three plates
 	PointF arrDisksCoord[3];
 
 	int iDisksCount, iMovesCount, iStepTime
@@ -163,7 +163,7 @@ private:
 	// intermediate : the index of the intermediate
 	void Hanoi(int disksCount, int source, int destination, int intermediate);
 
-	// As its name implies
+	// As its name implies - moves a disk from one tower to another one
 	void MoveDiskFromTo(int source, int destination);
 
 	// Returns element in a given

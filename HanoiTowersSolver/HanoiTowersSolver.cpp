@@ -334,9 +334,9 @@ INT_PTR CALLBACK SolveMsgHndl(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPa
 		{
 			hanoiDrawer->SetHDC(hdc);
 
-			hanoiDrawer->SetStandCoordinates(HanoiDrawer::No1, 120, 62);
-			hanoiDrawer->SetStandCoordinates(HanoiDrawer::No2, 400, 62);
-			hanoiDrawer->SetStandCoordinates(HanoiDrawer::No3, 670, 62);
+			hanoiDrawer->SetTowerCoordinates(HanoiDrawer::No1, 120, 62);
+			hanoiDrawer->SetTowerCoordinates(HanoiDrawer::No2, 400, 62);
+			hanoiDrawer->SetTowerCoordinates(HanoiDrawer::No3, 670, 62);
 
 			hanoiDrawer->DrawTowers();
 			hanoiDrawer->DrawDisks();

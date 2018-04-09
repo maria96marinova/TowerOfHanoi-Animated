@@ -14,7 +14,7 @@ DiskGUI::DiskGUI(string strLabel, POINT textCoordinate, RECT rect, int width, in
 	this->height = height;
 }
 
-POINT DiskGUI::GetPlateCoordinate()
+POINT DiskGUI::GetDiskCoordinate()
 {
 	POINT coord;
 	coord.x = this->rect.left;

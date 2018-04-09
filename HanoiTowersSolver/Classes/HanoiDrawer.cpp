@@ -78,18 +78,18 @@ HanoiDrawer::HanoiDrawer(HDC hdc=NULL, int platesCount=HanoiDrawer::MIN_DISKS_CO
 	this->solved = false;
 }
 
-void HanoiDrawer::SetStandCoordinates(Tower stand, int left, int top)
+void HanoiDrawer::SetTowerCoordinates(Tower stand, int left, int top)
 {
 	switch (stand)
 	{
 	case No1 :
-		this->arrDisksCoord[0] = HanoiDrawer::PointF(left, top);
+		this->arrTowersCoord[0] = HanoiDrawer::PointF(left, top);
 		break;
 	case No2:
-		this->arrDisksCoord[1] = HanoiDrawer::PointF(left, top);
+		this->arrTowersCoord[1] = HanoiDrawer::PointF(left, top);
 		break;
 	case No3:
-		this->arrDisksCoord[2] = HanoiDrawer::PointF(left, top);
+		this->arrTowersCoord[2] = HanoiDrawer::PointF(left, top);
 		break;
 	}
 }
@@ -103,7 +103,7 @@ void HanoiDrawer::DrawTowers()
 
 void HanoiDrawer::DrawOneTower(Tower stand)
 {
-	Rectangle(this->hdc, this->arrDisksCoord[stand].x, this->arrDisksCoord[stand].y, this->arrDisksCoord[stand].x + TOWER_WIDTH, this->arrDisksCoord[stand].y + TOWER_HEIGHT);
+	Rectangle(this->hdc, this->arrTowersCoord[stand].x, this->arrTowersCoord[stand].y, this->arrTowersCoord[stand].x + TOWER_WIDTH, this->arrTowersCoord[stand].y + TOWER_HEIGHT);
 }
 
 void HanoiDrawer::DrawDisks()
@@ -152,10 +152,10 @@ void HanoiDrawer::DrawDisksInList(Tower tower, list<int> listDisks)
 		diskNumber = *listDisksIter;
 		diskWidth = TOWER_WIDTH/2 * diskNumber * DISK_SIZE_ENLARGMENT_CONSTANT;
 
-		x1 = this->arrDisksCoord[tower].x - diskWidth + TOWER_WIDTH / 2;
-		y1 = this->arrDisksCoord[tower].y + TOWER_HEIGHT - DISK_HEIGHT * i - DISK_HEIGHT;
-		x2 = this->arrDisksCoord[tower].x + diskWidth + TOWER_WIDTH / 2;
-		y2 = this->arrDisksCoord[tower].y + TOWER_HEIGHT - DISK_HEIGHT * i;
+		x1 = this->arrTowersCoord[tower].x - diskWidth + TOWER_WIDTH / 2;
+		y1 = this->arrTowersCoord[tower].y + TOWER_HEIGHT - DISK_HEIGHT * i - DISK_HEIGHT;
+		x2 = this->arrTowersCoord[tower].x + diskWidth + TOWER_WIDTH / 2;
+		y2 = this->arrTowersCoord[tower].y + TOWER_HEIGHT - DISK_HEIGHT * i;
 
 		rectArea.left = x1;
 		rectArea.top = y1;
@@ -281,11 +281,11 @@ void HanoiDrawer::Invalidate()
 }
 
 
-void HanoiDrawer::Hanoi(int platesCount, int source, int destination, int intermediate)
+void HanoiDrawer::Hanoi(int disksCount, int source, int destination, int intermediate)
 {
-	if (platesCount == 1)
+	if (disksCount == 1)
 	{
-		listSavedState.push_back(platesCount);
+		listSavedState.push_back(disksCount);
 		listSavedState.push_back(source);
 		listSavedState.push_back(destination);
 		listSavedState.push_back(intermediate);
@@ -293,9 +293,9 @@ void HanoiDrawer::Hanoi(int platesCount, int source, int destination, int interm
 	}
 	else
 	{
-		Hanoi(platesCount - 1, source, intermediate, destination);
+		Hanoi(disksCount - 1, source, intermediate, destination);
 		Hanoi(1, source, destination, intermediate);
-		Hanoi(platesCount - 1, intermediate, destination, source);
+		Hanoi(disksCount - 1, intermediate, destination, source);
 		return;
 	}
 }

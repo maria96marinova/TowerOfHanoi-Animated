@@ -13,7 +13,7 @@ public:
 	DiskGUI(string strLabel, POINT textCoor, RECT rect, int width, int height);
 
 	// Getters and setters 
-	POINT GetPlateCoordinate();
+	POINT GetDiskCoordinate();
 	int GetX();
 	int GetY();
 	int GetWidth();

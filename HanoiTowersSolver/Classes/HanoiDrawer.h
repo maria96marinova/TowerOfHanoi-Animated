@@ -61,8 +61,8 @@ public:
 	HanoiDrawer(HDC, int);
 	HanoiDrawer(HDC, int, bool, int);
 
-	// Adjust stand in App main window
-	void SetStandCoordinates(Tower, int, int);
+	// Adjust tower in App main window
+	void SetTowerCoordinates(Tower, int, int);
 	// Advance one step to solve Hanoi
 	void SolveNextStep();
 
@@ -128,8 +128,8 @@ private:
 
 	bool proceedNextStep
 		, solved;
-	// Coordinates of the three plates
-	PointF arrDisksCoord[3];
+	// Coordinates of the three towers
+	PointF arrTowersCoord[3];
 
 	int iDisksCount, iMovesCount, iStepTime
 		, countContainerResourceId
